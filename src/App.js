@@ -47,7 +47,9 @@ function App() {
 
   return (
     <div className="App">
+      {/*
       <Scroll />
+      */}
 
       <ThemeProvider theme={theme}>
         <Home />

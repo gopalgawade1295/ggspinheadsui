@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/Header';
 import { Box, Grid, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { grey } from '@mui/material/colors';
@@ -9,10 +9,14 @@ import Carousel from '../components/Carousel';
 import MiniCarousel from '../components/MiniCarousel';
 import playbtn from '../assets/images/play-circle-svgrepo-com.png';
 import '../assets/styles/style.css';
+import ReactPlayer from 'react-player/youtube';
+import Playerimg from '../assets/images/college group.png';
 
 const Home = () => {
+    const [play, setPlay] = useState(false);
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.up('md'));
+    const matches2 = useMediaQuery(theme.breakpoints.up('sm'));
 
     return (
         <div>
@@ -43,15 +47,33 @@ const Home = () => {
 
                     <Grid item lg={6} md={7.5} sm={12} xs={12}>
                         <Box sx={{ p: 7, textAlign: 'left', height: '400px' }}>
-                            <div className='iframediv'>
-                                <TabButtons>
-                                    <img
-                                        src={playbtn}
-                                        alt='play'
-                                        height={90}
+                            {!play ?
+                                <div
+                                    className='iframediv'
+                                    style={{ height: !matches2 ? '300px' : '380px', width: '100%' }}
+                                >
+                                    <TabButtons>
+                                        <img
+                                            src={playbtn}
+                                            alt='play'
+                                            height={90}
+                                            onClick={() => setPlay(true)}
+                                        />
+                                    </TabButtons>
+                                </div> :
+                                <div
+                                    className='player-wrapper'
+                                    style={{ height: !matches2 ? '300px' : '380px', width: '100%' }}
+                                >
+                                    <ReactPlayer
+                                        className='react-player'
+                                        url='https://www.youtube.com/watch?v=LXb3EKWsInQ'
+                                        width='100%'
+                                        height={!matches2 ? '300px' : '380px'}
+                                        playing={play}
                                     />
-                                </TabButtons>
-                            </div>
+                                </div>
+                            }
                         </Box>
                     </Grid>
                 </Grid>

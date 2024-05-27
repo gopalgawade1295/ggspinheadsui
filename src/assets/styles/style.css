@@ -162,10 +162,21 @@
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    height: 100%;
-    width: 100%;
     background: url(../images/college\ group.png);
     background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.player-wrapper {
+    position: relative;
+    padding-top: 56.25%;
+    border-radius: 8px;
+    /* Player ratio: 100 / (1280 / 720) */
+}
+
+.react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
